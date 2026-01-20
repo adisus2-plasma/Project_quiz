@@ -27,7 +27,7 @@ class StartPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      'เกมทายนิสัยการกิน555555',
+                      'เกมทายนิสัยการกิน',
                       style: TextStyle(
                         fontSize: 32,
                         color: Colors.white,
