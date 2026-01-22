@@ -7,7 +7,7 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 62, 60, 63), // สีพื้นเวลามีขอบด้านข้าง
+      backgroundColor: const Color(0xFFF8ECFF), // สีพื้นเวลามีขอบด้านข้าง
       body: Center(
         // 🔹 ล็อกสัดส่วนจอให้เหมือนจอมือถือ 9:16
         child: AspectRatio(
