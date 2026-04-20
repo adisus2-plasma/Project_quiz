@@ -12,47 +12,100 @@ class QuizPage2 extends StatelessWidget {
     final choices = [
       {
         'text': 'ห้าง',
-        'next': (BuildContext context, List<Map<String, int>> answers) => 
+        'next': (BuildContext context, List<Map<String, int>> answers) =>
             StoryPageMall1(answers: answers),
       },
       {
         'text': 'คาเฟ่',
-        'next': (BuildContext context, List<Map<String, int>> answers) => 
+        'next': (BuildContext context, List<Map<String, int>> answers) =>
             StoryPageCafe1(answers: answers),
       },
       {
         'text': 'สวนสนุก',
-        'next': (BuildContext context, List<Map<String, int>> answers) => 
+        'next': (BuildContext context, List<Map<String, int>> answers) =>
             StoryPageThemePark1(answers: answers),
       },
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text('2. คุณคิดว่าเพื่อนจะชวนไปที่ไหน?')),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: choices.map((choice) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: ElevatedButton(
-              onPressed: () {
-                // เพิ่ม log ถ้าต้องการ
-                print('✅ ผู้ใช้เลือก: ${choice['text']}');
-
-                // ไปยังหน้าที่กำหนด
-                final Function nextPage = choice['next'] as Function;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => nextPage(context, answers),
-                  ),
-                );
-              },
-              child: Text(choice['text'] as String),
-            ),
-          );
-        }).toList(),
+    appBar: AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      leading: ButtonTheme(
+        minWidth: 40,
+        height: 40,
+        child: IconButton(
+          padding: const EdgeInsets.all(1),
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xECEFCA), size: 20),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-    );
+    ),
+    extendBodyBehindAppBar: true,
+    body: Stack(
+      fit: StackFit.expand,
+      children: [
+
+        // 🔹 Background
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/quiz2_bg.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        // 🔹 เนื้อหา + ปุ่ม
+        Column(
+          children: [
+            const Spacer(),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              child: Column(
+                children: choices.map((choice) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print('✅ ผู้ใช้เลือก: ${choice['text']}');
+                          final Function nextPage = choice['next'] as Function;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => nextPage(context, answers),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF2C2C2C),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          elevation: 0,
+                        ),
+                        child: Text(
+                          choice['text'] as String,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+          ],
+        ),
+      ],
+    ),
+  );
   }
 }

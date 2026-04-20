@@ -9,15 +9,15 @@ class QuizPage1 extends StatelessWidget {
   Widget build(BuildContext context) {
     final choices = [
       {
-        'text': 'ข้าวเหนียวหมูปิ้ง',
+        'text': 'กินข้าวเหนียวหมูปิ้ง',
         'scores': {'S': 2, 'L': 1, 'N': 0, 'F': 3, 'B': 7, 'M': 0},
       },
       {
-        'text': 'ข้าวกะเพราไข่ดาว',
+        'text': 'ข้าวกระเพราไข่ดาว',
         'scores': {'S': 0, 'L': 2, 'N': 7, 'F': 0, 'B': 1, 'M': 3},
       },
       {
-        'text': 'กล้วยกับโยเกิร์ตก็พอเบา ๆ',
+        'text': 'กล้วยกับโยเกิร์ตก็พอเบาๆ',
         'scores': {'S': 7, 'L': 3, 'N': 2, 'F': 0, 'B': 0, 'M': 1},
       },
       {
@@ -27,32 +27,106 @@ class QuizPage1 extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('1. มื้อเช้ากินอะไรดี?')),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: choices.map((choice) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: ElevatedButton(
-              onPressed: () {
-                final choiceText = choice['text'] as String;
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
 
-                print('✅ ผู้ใช้เลือก: "$choiceText"');
-                
-                final updatedAnswers = [...answers]; // clone ก่อน
-                updatedAnswers.add(choice['scores'] as Map<String, int>); // เพิ่มคะแนนของข้อ 3
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => StoryPage4(answers: updatedAnswers), // ส่งต่อ
-                  ),
-                );
-              },
-              child: Text(choice['text'] as String),
+          // 🔹 GIF Background
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/story123_q1.gif',
+              fit: BoxFit.cover,
             ),
-          );
-        }).toList(),
+          ),
+
+          // 🔹 Overlay มืดนิดนึง
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.25),
+            ),
+          ),
+
+          // 🔹 เนื้อหา
+          SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 32,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.85), // กล่องขาวโปร่งแสง
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+
+                      // 🔹 คำถาม
+                      const Text(
+                        'มื้อเช้ากินอะไรดี?',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      // 🔹 ตัวเลือก
+                      ...choices.map((choice) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                final updatedAnswers = [...answers];
+                                updatedAnswers.add(
+                                  choice['scores'] as Map<String, int>,
+                                );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        StoryPage4(answers: updatedAnswers),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black87,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 16,
+                                ),
+                              ),
+                              child: Text(
+                                choice['text'] as String,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'story_page_5.dart';
-
-void main() => runApp(StoryPage4(answers: [],));
+import 'package:project_quiz/quiz_pages/quiz_page_2.dart';
 
 class StoryPage4 extends StatelessWidget {
   final List<Map<String, int>> answers;
@@ -9,66 +7,71 @@ class StoryPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: StoryScreen(answers: answers),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class StoryScreen extends StatelessWidget {
-  final List<Map<String, int>> answers;
-  const StoryScreen({super.key, required this.answers});
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'เช้าวันหยุดสุดสัปดาห์เสียง\nนาฬิกาปลุกดังขึ้น',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    height: 1.5,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => StoryPage5(answers: answers),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
-                      vertical: 14,
-                    ),
-                  ),
-                  child: const Text(
-                    'ถัดไป',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-                const SizedBox(height: 60),
-              ],
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+
+          // 🔹 Background ลายตาราง
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/story4_bg.png',
+              fit: BoxFit.cover,
             ),
           ),
-        ),
+
+          // 🔹 เนื้อหา
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  const SizedBox(height: 200),
+
+                  // 🔹 Notification LINE (กดได้)
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => QuizPage2(answers: answers),
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      'assets/images/story4_bt.png',
+                      width: double.infinity,
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // 🔹 ลูกศรขึ้น + ข้อความ
+                  const Column(
+                    children: [
+                      Icon(
+                        Icons.keyboard_double_arrow_up,
+                        color: Color(0xFF6B3A2A),
+                        size: 28,
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'แตะเพื่ออ่านข้อความ',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF6B3A2A),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

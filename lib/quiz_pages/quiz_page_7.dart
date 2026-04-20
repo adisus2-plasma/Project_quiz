@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_quiz/story_pages/story_page_9.dart';
+import 'package:project_quiz/story_pages/story_page_8.dart';
 
 class QuizPage7 extends StatelessWidget {
   final List<Map<String, int>> answers;
-
   const QuizPage7({super.key, required this.answers});
 
   @override
@@ -28,31 +27,108 @@ class QuizPage7 extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('7. ระหว่างคุณกินข้าว...คุณคิดว่าคุณเป็นคนเเบบไหน?')),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: choices.map((choice) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: ElevatedButton(
-              onPressed: () {
-                final choiceText = choice['text'] as String;
-                print('✅ ผู้ใช้เลือก: "$choiceText"');
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
 
-                final updatedAnswers = [...answers]; // clone ก่อน
-                updatedAnswers.add(choice['scores'] as Map<String, int>); // เพิ่มคะแนนของข้อ 3
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => StoryPage9(answers: updatedAnswers), // ส่งต่อ
-                  ),
-                );
-              },
-              child: Text(choice['text'] as String),
+          // 🔹 GIF Background
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/quiz67_bg.gif',
+              fit: BoxFit.cover,
             ),
-          );
-        }).toList(),
+          ),
+
+          // 🔹 Overlay
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.10),
+            ),
+          ),
+
+          // 🔹 เนื้อหา
+          SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 32,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.85),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+                      // 🔹 คำถาม
+                      const Text(
+                        'ระหว่างคุณกินข้าว...\nคุณคิดว่าคุณเป็นคนแบบไหน?',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+
+                      const SizedBox(height: 24),
+
+                      // 🔹 ตัวเลือก
+                      ...choices.map((choice) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 56,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                final choiceText = choice['text'] as String;
+                                print('✅ ผู้ใช้เลือก: "$choiceText"');
+                                final updatedAnswers = [...answers];
+                                updatedAnswers.add(
+                                  choice['scores'] as Map<String, int>,
+                                );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => StoryPage8(
+                                      answers: updatedAnswers,
+                                    ),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF2C2C2C),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                elevation: 0,
+                              ),
+                              child: Text(
+                                choice['text'] as String,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

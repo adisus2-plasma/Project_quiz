@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_quiz/story_pages/story_page_1.dart';
+import 'package:project_quiz/start.dart';
 
 class ResultPage extends StatelessWidget {
   final List<Map<String, int>> answers; // เก็บคะแนนของแต่ละข้อที่มีการเก็บ
@@ -78,7 +78,7 @@ class ResultPage extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => StoryPage1(),
+                    builder: (_) => StartPage(),
                   ),
                   (route) => false,
                 );

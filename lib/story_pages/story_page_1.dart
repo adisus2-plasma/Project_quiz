@@ -1,39 +1,74 @@
 import 'package:flutter/material.dart';
 import 'story_page_2.dart';
 
-void main() => runApp(StoryPage1());
-
 class StoryPage1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: StoryScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+  const StoryPage1({super.key});
 
-class StoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+
+          // 🔹 GIF Background เต็มจอ
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/story123_q1.gif',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // 🔹 Overlay มืดด้านล่างให้อ่านข้อความง่าย
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black54, // ← ด้านล่างมืดนิดนึง
+                  ],
+                  stops: [0.0, 0.5, 1.0],
+                ),
+              ),
+            ),
+          ),
+
+          // 🔹 เนื้อหา
+          Positioned(
+            left: 24,
+            right: 24,
+            bottom: 80,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+
+                // 🔹 ข้อความ
+                const Text(
                   'เช้าวันหยุดสุดสัปดาห์เสียง\nนาฬิกาปลุกดังขึ้น',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    height: 1.5,
+                    color: Colors.white,
+                    height: 1.6,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black45,
+                        blurRadius: 6,
+                        offset: Offset(1, 2),
+                      ),
+                    ],
                   ),
                   textAlign: TextAlign.center,
                 ),
+
                 const SizedBox(height: 40),
+
+                // 🔹 ปุ่มถัดไป
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -55,14 +90,16 @@ class StoryScreen extends StatelessWidget {
                   ),
                   child: const Text(
                     'ถัดไป',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 60),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

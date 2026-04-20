@@ -1,74 +1,91 @@
 import 'package:flutter/material.dart';
-import 'package:project_quiz/quiz_pages/quiz_page_5.dart';
-
-void main() => runApp(StoryPage6(answers: []));
+import 'package:project_quiz/story_pages/story_page_7.dart';
 
 class StoryPage6 extends StatelessWidget {
   final List<Map<String, int>> answers;
-  const StoryPage6({super.key, required this.answers}); // ชื่อ class ต้องตรงกับที่เรียกใช้
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: StoryScreen(answers: answers), // ✅ ส่งต่อไปยัง StoryScreen
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class StoryScreen extends StatelessWidget {
-  final List<Map<String, int>> answers; // ✅ รับ parameter
-  const StoryScreen({super.key, required this.answers});
+  const StoryPage6({super.key, required this.answers});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+
+          // 🔹 Background
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/food_quiz_only.gif',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // 🔹 เนื้อหา
+          // 🔹 เนื้อหา
+          SafeArea(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  '6',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    height: 1.5,
+
+                const Spacer(flex: 1,), // ← ด้านบน
+
+                // 🔹 ข้อความตรงกลาง
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    'พอถึงบ้านก็หมดแรง\nคุณก็เผลอหลับไป',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizPage5(answers: answers), // ✅ ส่งต่อ
+
+                const Spacer(), // ← ด้านล่าง (ดันปุ่มลงไป)
+
+                // 🔹 ปุ่มถัดไป
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 60),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => StoryPage7(
+                              answers: answers,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black87,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        elevation: 0,
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      child: const Text(
+                        'ถัดไป',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
-                      vertical: 14,
-                    ),
-                  ),
-                  child: const Text(
-                    'ถัดไป',
-                    style: TextStyle(fontSize: 18),
                   ),
                 ),
-                const SizedBox(height: 60),
+
+                const SizedBox(height: 48),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }
