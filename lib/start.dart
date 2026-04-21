@@ -21,7 +21,7 @@ class StartPage extends StatelessWidget {
           // 🔹 GIF เต็มจอสุดขอบ
           Positioned.fill(
             child: Image.asset(
-              'assets/images/start_bg.gif',
+              'assets/images/start_bg.webp',
               fit: BoxFit.cover,
             ),
           ),
