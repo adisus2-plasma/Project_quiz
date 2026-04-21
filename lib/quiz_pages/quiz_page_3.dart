@@ -38,7 +38,7 @@ class QuizPage3 extends StatelessWidget {
           // 🔹 GIF Background
           Positioned.fill(
             child: Image.asset(
-              'assets/images/food_quiz_only.gif',
+              'assets/images/food_quiz_only.webp',
               fit: BoxFit.cover,
             ),
           ),
