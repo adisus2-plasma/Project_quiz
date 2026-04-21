@@ -26,7 +26,7 @@ class _QuizAppState extends State<QuizApp> {
     await Future.wait([
       precacheImage(const AssetImage('assets/images/start_bg.gif'), context),
       precacheImage(const AssetImage('assets/images/logo.png'), context),
-      precacheImage(const AssetImage('assets/images/story1_bg.gif'), context),
+      precacheImage(const AssetImage('assets/videos/story1_bg.gif'), context),
       precacheImage(const AssetImage('assets/images/story123_q1.gif'), context),
       precacheImage(const AssetImage('assets/images/story2_phone.png'), context),
       precacheImage(const AssetImage('assets/images/story4_bg.png'), context),
