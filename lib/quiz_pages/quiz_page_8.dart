@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../page_transitions.dart';
 import '../result_page.dart';
 
 class QuizPage8 extends StatelessWidget {
@@ -96,9 +97,8 @@ class QuizPage8 extends StatelessWidget {
                                 ];
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        ResultPage(answers: updatedAnswers),
+                                  fadeRoute(
+                                    ResultPage(answers: updatedAnswers),
                                   ),
                                 );
                               },

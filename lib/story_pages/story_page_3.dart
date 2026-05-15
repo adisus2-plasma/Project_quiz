@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_quiz/page_transitions.dart';
 import 'package:project_quiz/quiz_pages/quiz_page_1.dart';
 
 class StoryPage3 extends StatelessWidget {
@@ -73,9 +74,7 @@ class StoryPage3 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizPage1(answers: []),
-                      ),
+                      fadeRoute(QuizPage1(answers: [])),
                     );
                   },
                   style: ElevatedButton.styleFrom(

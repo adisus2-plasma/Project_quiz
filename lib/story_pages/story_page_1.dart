@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../page_transitions.dart';
 import 'story_page_2.dart';
 
 class StoryPage1 extends StatelessWidget {
@@ -73,9 +74,7 @@ class StoryPage1 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => StoryPage2(),
-                      ),
+                      fadeRoute(StoryPage2()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../page_transitions.dart';
 import '../story_pages/story_page_cafe_4.dart'; // ✅ นำเข้า StoryPageCafe4
 
 void main() => runApp(StoryPageCafe3(answers: []));
@@ -44,9 +45,7 @@ class StoryScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => StoryPageCafe4(answers: answers), // ✅ ส่งต่อ
-                      ),
+                      fadeRoute(StoryPageCafe4(answers: answers)),
                     );
                   },
                   style: ElevatedButton.styleFrom(

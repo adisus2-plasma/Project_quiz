@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_quiz/page_transitions.dart';
 import 'package:project_quiz/quiz_pages/quiz_page_8.dart';
 
 void main() => runApp(StoryPage9(answers: []));
@@ -44,10 +45,7 @@ class StoryScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizPage8(answers: answers), // ✅ ส่งต่อ
-                        // builder: (_) => ResultPage(answers: answers)
-                      ),
+                      fadeRoute(QuizPage8(answers: answers)),
                     );
                   },
                   style: ElevatedButton.styleFrom(

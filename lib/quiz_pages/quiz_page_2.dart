@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../page_transitions.dart';
 import '../story_pages/story_page_mall_1.dart';
 import '../story_pages/story_page_cafe_1.dart';
 import '../story_pages/story_page_themepark_1.dart';
@@ -74,9 +75,7 @@ class QuizPage2 extends StatelessWidget {
                           final Function nextPage = choice['next'] as Function;
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => nextPage(context, answers),
-                            ),
+                            fadeRoute(nextPage(context, answers)),
                           );
                         },
                         style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_quiz/page_transitions.dart';
 import 'package:project_quiz/story_pages/story_page_3.dart';
 
 class StoryPage2 extends StatefulWidget {
@@ -87,7 +88,7 @@ class _StoryPage2State extends State<StoryPage2>
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => StoryPage3()),
+                          fadeRoute(StoryPage3()),
                         );
                       },
                       style: ElevatedButton.styleFrom(

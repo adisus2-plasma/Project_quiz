@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_quiz/page_transitions.dart';
 import 'package:project_quiz/quiz_pages/quiz_page_6.dart';
 
 class StoryPage7 extends StatelessWidget {
@@ -55,8 +56,8 @@ class StoryPage7 extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => QuizPage6(
+                          fadeRoute(
+                            QuizPage6(
                               answers: answers,
                             ),
                           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'page_transitions.dart';
 import 'story_pages/story_page_1.dart';
 
 class StartPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class StartPage extends StatelessWidget {
           // 🔹 GIF เต็มจอสุดขอบ
           Positioned.fill(
             child: Image.asset(
-              'assets/images/start_bg.webp',
+              'assets/images/start_bg.gif',
               fit: BoxFit.cover,
             ),
           ),
@@ -40,12 +41,8 @@ class StartPage extends StatelessWidget {
               child: Column(
                 children: [
 
-
-                  // 🔹 โลโก้
-                  Image.asset(
-                    'assets/images/logo.png',
-                    width: 280,
-                  ),
+                  // 🔹 ดันลงมาให้อยู่ใต้โลโก้ FOOD MY TYPE
+                  const Spacer(flex: 8),
 
                   // 🔹 Subtitle
                   const Text(
@@ -58,30 +55,9 @@ class StartPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
 
-                  const Spacer(flex: 3),
+                  const Spacer(flex: 2),
 
-                  // 🔹 Quote box
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    //กรอบ
-                    // decoration: BoxDecoration(
-                    //   color: Colors.white.withOpacity(0.75),
-                    //   border: Border.all(color: Colors.black26),
-                    //   borderRadius: BorderRadius.circular(8),
-                    // ),
-                    child: const Text(
-                      '"กินยังไง ก็เป็นยังงั้น! มาค้นหาตัวตนที่ซ่อนอยู่ในอาหารมื้อโปรดของคุณ '
-                      'แค่ตอบคำถามเรื่องกินๆ แล้วเราจะบอกว่าคุณมีตัวตนแบบไหนกันแน่! "',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black87,
-                        height: 1.6,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 24),
 
                   // 🔹 ปุ่ม START
                   SizedBox(
@@ -98,9 +74,7 @@ class StartPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => StoryPage1(),
-                          ),
+                          fadeRoute(StoryPage1()),
                         );
                       },
                       child: const Text(
@@ -115,7 +89,7 @@ class StartPage extends StatelessWidget {
                     ),
                   ),
 
-                  const Spacer(flex: 2),
+                  const Spacer(flex: 3),
                 ],
               ),
             ),

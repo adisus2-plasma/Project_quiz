@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_quiz/page_transitions.dart';
 import 'package:project_quiz/story_pages/story_page_mall_2.dart';
 import 'package:project_quiz/story_pages/story_page_cafe_2.dart';
 import 'package:project_quiz/story_pages/story_page_themepark_2.dart';
@@ -110,7 +111,7 @@ class QuizPage3 extends StatelessWidget {
 
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (_) => nextPage),
+                                  fadeRoute(nextPage),
                                 );
                               },
                               style: ElevatedButton.styleFrom(

@@ -2,7 +2,8 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:gal/gal.dart';
+import 'package:project_quiz/page_transitions.dart';
+import 'package:project_quiz/save_image.dart';
 import 'package:project_quiz/start.dart';
 
 class ResultPage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _ResultPageState extends State<ResultPage>
       case 'S':
         return 'assets/images/results/sugar_seeker.png';
       case 'L':
-        return 'assets/images/results/late_night_muncher.png';
+        return 'assets/images/results/night_eater.png';
       case 'N':
         return 'assets/images/results/skip_meal.png';
       case 'F':
@@ -85,20 +86,9 @@ class _ResultPageState extends State<ResultPage>
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       final bytes = byteData!.buffer.asUint8List();
 
-      final hasAccess = await Gal.hasAccess();
-      if (!hasAccess) {
-        final granted = await Gal.requestAccess();
-        if (!granted) {
-          messenger.showSnackBar(
-            const SnackBar(content: Text('ไม่ได้รับอนุญาตเข้าถึงคลังรูป')),
-          );
-          return;
-        }
-      }
-
-      await Gal.putImageBytes(bytes, name: 'food_type_receipt');
+      await saveImageBytes(bytes, 'food_type_receipt');
       messenger.showSnackBar(
-        const SnackBar(content: Text('บันทึกรูปลงคลังรูปแล้ว')),
+        const SnackBar(content: Text('บันทึกรูปแล้ว')),
       );
     } catch (e) {
       messenger.showSnackBar(
@@ -162,7 +152,7 @@ class _ResultPageState extends State<ResultPage>
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (_) => StartPage()),
+                        fadeRoute(StartPage()),
                         (route) => false,
                       );
                     },
