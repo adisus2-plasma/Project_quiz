@@ -47,5 +47,4 @@ app.*.map.json
 .env*.local
 
 # MP4 and Gif
-./assets/images/*.webp
-./assets/images/*.gif
+./assets/
