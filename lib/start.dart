@@ -42,20 +42,34 @@ class StartPage extends StatelessWidget {
                 children: [
 
                   // 🔹 ดันลงมาให้อยู่ใต้โลโก้ FOOD MY TYPE
-                  const Spacer(flex: 8),
+                  const Spacer(flex: 9),
 
                   // 🔹 Subtitle
-                  const Text(
-                    'รู้จักตัวตนของคุณผ่านจานโปรด',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
-                    ),
+                  RichText(
                     textAlign: TextAlign.center,
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'รู้จักตัวตนของคุณ',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '\nผ่านจานโปรด',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
 
-                  const Spacer(flex: 2),
+                  const Spacer(flex: 1),
 
                   const SizedBox(height: 24),
 

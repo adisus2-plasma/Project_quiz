@@ -21,53 +21,35 @@ class StoryPage1 extends StatelessWidget {
             ),
           ),
 
-          // 🔹 Overlay มืดด้านล่างให้อ่านข้อความง่าย
-          Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.transparent,
-                    Colors.black54, // ← ด้านล่างมืดนิดนึง
-                  ],
-                  stops: [0.0, 0.5, 1.0],
-                ),
-              ),
-            ),
-          ),
-
           // 🔹 เนื้อหา
-          Positioned(
-            left: 24,
-            right: 24,
-            bottom: 80,
+          SafeArea(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               children: [
+                const Spacer(flex: 3),
 
-                // 🔹 ข้อความ
-                const Text(
-                  'เช้าวันหยุดสุดสัปดาห์เสียง\nนาฬิกาปลุกดังขึ้น',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    height: 1.6,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black45,
-                        blurRadius: 6,
-                        offset: Offset(1, 2),
-                      ),
-                    ],
+                // 🔹 ข้อความตรงกลาง
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    'เช้าวันหยุดสุดสัปดาห์\nเสียงนาฬิกาปลุกดังขึ้น',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      height: 1.6,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black45,
+                          blurRadius: 6,
+                          offset: Offset(1, 2),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
 
-                const SizedBox(height: 40),
+                const Spacer(flex: 1),
 
                 // 🔹 ปุ่มถัดไป
                 ElevatedButton(
@@ -83,7 +65,7 @@ class StoryPage1 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
+                      horizontal: 50,  // ← ควบคุมความกว้างปุ่ม
                       vertical: 14,
                     ),
                   ),
@@ -95,6 +77,8 @@ class StoryPage1 extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                const Spacer(flex: 2),
               ],
             ),
           ),

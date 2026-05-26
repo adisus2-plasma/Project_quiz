@@ -49,6 +49,7 @@ class _QuizAppState extends State<QuizApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.transparent,
+        fontFamily: 'BaiJamjuree',
       ),
       home: _isLoading
           ? const _LoadingScreen()
