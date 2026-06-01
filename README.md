@@ -6,18 +6,39 @@
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
-[![Firebase](https://img.shields.io/badge/Firebase-Hosting-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
 </div>
 
----
-
 ## 📖 เกี่ยวกับโปรเจค
 
-**FOOD MY TYPE** คือ interactive story quiz แนว personality test  
-ผู้ใช้จะดำเนินชีวิตผ่านสถานการณ์จริง แล้วตัดสินใจว่าจะกินอะไร  
-เพื่อค้นพบว่าตัวเองเป็น "นักกิน" ประเภทไหน จาก 6 บุคลิกอาหาร
+**FOOD MY TYPE** คือแอปพลิเคชันรูปแบบ *Interactive Story Quiz* ในแนว *Personality Test* ที่จะพาผู้ใช้เพลิดเพลินไปกับการดำเนินชีวิตจำลองผ่านสถานการณ์จริงในแต่ละวัน แล้วตัดสินใจเลือกเมนูอาหารในสถานการณ์นั้นๆ เพื่อค้นหาและวิเคราะห์ว่าตัวตนของคุณจัดอยู่ในกลุ่ม **"นักกิน"** ประเภทไหน จากทั้งหมด 6 บุคลิกอาหาร (6 Food Personalities) 
+
+---
+
+## 👤 คณะผู้จัดทำ 
+
+### ผู้จัดทำ
+* **พรหมสิริ เจริญทรัพย์**
+
+### อาจารย์ที่ปรึกษา
+* **อ.ทศพร สังข์กังวาล**
+
+---
+
+## 🏫 สังกัดหน่วยงาน
+
+* **หลักสูตร:** ปริญญาเทคโนโลยีบัณฑิต โครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยีมีเดีย
+* **สาขาวิชา:** มีเดียทางการแพทย์และวิทยาศาสตร์
+* **คณะ:** สถาปัตยกรรมศาสตร์และการออกแบบ
+* **สถาบัน:** มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+* **ปีการศึกษา:** 2568
+
+---
+
+<p align="center">
+  © 2026 FOOD MY TYPE. All Rights Reserved.
+</p>
 
 ---
 
